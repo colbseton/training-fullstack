@@ -20,7 +20,7 @@ mongoose
 
 // CORS
 app.use(cors());
-app.use(bodyparser.urlencoded(({ extended: true })));
+app.use(bodyparser.json());
 
 app.get("/", (req, res) => {
   res.status(200);

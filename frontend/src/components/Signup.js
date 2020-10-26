@@ -10,7 +10,8 @@ class Signup extends React.Component {
       password: "",
     };
   }
-  onSubmit = () => {
+  onSubmit = (event) => {
+    event.preventDefault();
     this.props.onSubmit(this.state);
   };
 
