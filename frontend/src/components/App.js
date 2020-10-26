@@ -5,8 +5,6 @@ import auth from "../api/auth.api";
 
 class App extends React.Component {
   onSignedUp = (user) => {
-    console.log(user);
-
     auth.signUp(user);
   };
 

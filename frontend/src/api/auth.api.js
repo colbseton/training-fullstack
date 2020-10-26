@@ -1,15 +1,20 @@
 import axios from "axios";
 
-const URL = "localhost:5000";
+const URL = "http://localhost:5000";
 const headers = {
   "Content-Type": "application/json",
 };
 
-const signUp = async (user) => {
+const signUp = async ({ email, password }) => {
+  console.log(email,password);
   await axios
-    .post(`${URL}/signup`, user, {
-      headers: headers,
-    })
+    .post(
+      `${URL}/auth/signup`,
+      { email, password },
+      {
+        headers: headers,
+      }
+    )
     .then(() => console.log("yay"));
 };
 

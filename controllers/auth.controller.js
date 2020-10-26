@@ -6,8 +6,8 @@ const checkPassword = (pwd1, pwd2) => {
 };
 
 const signin = async (req, res) => {
-  const { password, email } = req.body;
-  const userInDB = await User.findOne({ email: email }).catch((err) => {
+  const { user_email, user_password } = req.body;
+  const userInDB = await User.findOne({ email: user_email }).catch((err) => {
     return res.status(500).send(err);
   });
 
@@ -15,7 +15,7 @@ const signin = async (req, res) => {
     return res.status(400).send("user doesn't exists");
   }
 
-  if (checkPassword(password, userInDB.password)) {
+  if (checkPassword(user_password, userInDB.password)) {
     return res.status(200).send("logged in");
   } else {
     return res.status(401).send("wrong password");
@@ -23,8 +23,9 @@ const signin = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-  const { email, password } = req.body;
-  const alreadyExists = await User.findOne({ email: email }).catch((err) => {
+  const { user_email, user_password } = req.body;
+  console.log("signup", req.body);
+  const alreadyExists = await User.findOne({ email: user_email }).catch((err) => {
     return res.status(500).send(err);
   });
 
@@ -33,8 +34,8 @@ const signup = async (req, res) => {
   }
 
   const newUser = new User({
-    email: email,
-    password: passwordHash.generate(password),
+    email: user_email,
+    //password: passwordHash.generate(user_password),
   });
 
   try {
