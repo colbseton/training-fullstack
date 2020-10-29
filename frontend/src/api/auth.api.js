@@ -1,18 +1,17 @@
 import axios from "axios";
-import qs from "querystring";
 
 const URL = "http://localhost:5000";
 
-const signUp = async (user) => {
+const signInUp = async (user, endpoint) => {
   console.log(user);
   const { email, password } = user;
   await axios
     .post(
-      `${URL}/auth/signup`,
-      qs.stringify({
+      `${URL}/auth/${endpoint}`,
+      {
         email: email,
         password: password,
-      }),
+      },
       {
         headers: {
           "Content-Type": "application/json",
@@ -22,6 +21,6 @@ const signUp = async (user) => {
     .then(() => console.log("yay"));
 };
 
-const auth = { signUp };
+const auth = { signInUp };
 
 export default auth;
