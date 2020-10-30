@@ -3,7 +3,6 @@ import axios from "axios";
 const URL = "http://localhost:5000";
 
 const signInUp = async (user, endpoint) => {
-  console.log(user);
   const { email, password } = user;
   await axios
     .post(

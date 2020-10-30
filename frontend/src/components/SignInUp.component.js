@@ -49,6 +49,7 @@ class SignInUp extends React.Component {
             <TextField
               className={classes.textbox}
               size="small"
+              type="password"
               placeholder="password"
               variant="outlined"
               onChange={(event) =>

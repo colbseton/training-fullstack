@@ -1,7 +1,7 @@
 import React from "react";
 
 import SignInUp from "./SignInUp.component";
-import GoogleSignIn from "./GoogleSignIn";
+import ExternLogin from "./ExternLogin.component";
 import { Card, Divider, List, ListItem, Typography } from "@material-ui/core/";
 
 import { styled } from "@material-ui/core/styles";
@@ -20,27 +20,42 @@ const MyCard = styled(Card)({
 
 class App extends React.Component {
   onSignedIn = (user) => {
-    auth.signInUp(user, 'signin');
+    auth.signInUp(user, "signin");
   };
 
   onSignedUp = (user) => {
-    auth.signInUp(user, 'signup');
-  }
-  onGSignedIn = () => {};
+    auth.signInUp(user, "signup");
+  };
+
+  onExtSignedIn = (provider) => {
+    console.log(provider);
+  };
 
   render() {
     return (
       <MyCard>
         <Typography style={{ textAlign: "center" }}>
-          Choose your way of logging <i className="fas fa-plug" />
+          <b>Choose your way of logging</b> <i className="fas fa-plug" />
         </Typography>
         <List>
           <ListItem style={{ paddingBottom: "20px" }}>
-            <SignInUp onSignedIn={this.onSignedIn} onSignedUp={this.onSignedUp} />
+            <SignInUp
+              onSignedIn={this.onSignedIn}
+              onSignedUp={this.onSignedUp}
+            />
           </ListItem>
           <Divider variant="middle" />
           <ListItem style={{ paddingTop: "20px" }}>
-            <GoogleSignIn onGSignedIn={this.onGSignedIn} />
+            <ExternLogin
+              provider={"google"}
+              onExtSignedIn={this.onExtSignedIn}
+            />
+          </ListItem>
+          <ListItem style={{ paddingTop: "20px" }}>
+            <ExternLogin
+              provider={"github"}
+              onExtSignedIn={this.onExtSignedIn}
+            />
           </ListItem>
         </List>
       </MyCard>
