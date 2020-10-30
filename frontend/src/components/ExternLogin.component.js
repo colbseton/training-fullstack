@@ -41,7 +41,9 @@ class ExternLogin extends React.Component {
         style={{
           background: color,
         }}
-        onClick={this.onClick(provider)}
+        onClick={() => {
+          this.props.onExtSignedIn(provider);
+        }}
       >
         <i className={classIcon} style={{ paddingRight: "10px" }} />
         {buttonText}
