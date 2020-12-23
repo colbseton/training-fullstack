@@ -1,5 +1,5 @@
 # Fullstack training
-A little app I coded for traning. The goal was only to make  the client, server and data base parts communicate with each other.
+Quick REST api with user-login and very simple authentification. -WIP- (to come: user can choose between multi auth-provider).
 ### Tech I used
 * [node.js](https://nodejs.org/en/) - Event I/O for the backend
 * [Express](https://expressjs.com/en/) - Fast node.js network app framework 
